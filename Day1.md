@@ -142,19 +142,35 @@ public:
 
 **Problem:** Remove the nth node from the end of the list and return its head.
 
-**Approach:**
+**Approach:** Two-pointer technique where the fast pointer is moved n steps ahead first, then both pointers are moved until the fast pointer reaches the end.
 
 ```
 
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* ans = new ListNode(0, head);
+        ListNode* fast = ans;
+        ListNode* slow = ans;
 
-}
+        for(int i=0;i<=n;i++){
+            fast = fast->next;
+        }
+
+        while(fast != NULL){
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        slow->next = slow->next->next;
+
+        return ans->next;
+    }
+};
 
 ```
 
-**Time Complexity:**
-**Space Complexity:**
+**Time Complexity:** O(n)
+**Space Complexity:** O(1)
 
 ---
