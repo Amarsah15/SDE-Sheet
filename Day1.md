@@ -142,6 +142,55 @@ public:
 
 **Problem:** Remove the nth node from the end of the list and return its head.
 
+**Brute Force Solution:** 
+
+**Approach:** Count the total number of nodes, calculate the position from the start, and remove that node. If total nodes equal n, remove the head and return head->next. 
+
+```
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* tail = head;
+        int count = 0;
+
+        if(head->next == NULL) return NULL;
+
+        while(tail != NULL){
+            tail = tail->next;
+            count++;
+        }
+
+        int total = count - n;
+
+        if(total == 0){
+            return head->next;
+        }
+
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+
+        while(0 < total && curr->next != NULL){
+            prev = curr;
+            curr = curr->next;
+            total--;
+        }
+
+        if(curr != NULL && prev != NULL){
+            prev->next = curr->next;
+        }
+
+        return head;
+    }
+};
+
+```
+
+**Time Complexity:** O(n + n) = O(2n)
+**Space Complexity:** O(1)
+
+**Optimized Solution:** 
+
 **Approach:** Two-pointer technique where the fast pointer is moved n steps ahead first, then both pointers are moved until the fast pointer reaches the end.
 
 ```
@@ -172,5 +221,3 @@ public:
 
 **Time Complexity:** O(n)
 **Space Complexity:** O(1)
-
----
