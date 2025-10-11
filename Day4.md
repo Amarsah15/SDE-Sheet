@@ -44,6 +44,16 @@ public:
 
 **Approach:** Simple recursion to calculate number of ways to climb stairs.
 
+But what recursion relation is this problem following?
+
+We assume that we are at step 'i'. Now, we can reach step 'i' from either step 'i-1' or step 'i-2'. So, the total number of ways to reach step 'i' is the sum of the number of ways to reach steps 'i-1' and 'i-2'.
+How we think of base cases?
+
+- If we are at step 0, there is only 1 way to stay there (do nothing).
+- If we are at step 1, there is only 1 way to reach there (take a single step).
+
+Now, we have to find the number of ways to reach steps 'i-1' and 'i-2'. We can do that by calling the function recursively.
+
 ```
 class Solution {
 public:
