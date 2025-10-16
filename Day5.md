@@ -52,7 +52,7 @@ Here, in the worst case, we are making 3 recursive calls for each step until we 
 class Solution {
   public:
 
-    void insertAtBottom(stack<int> &st, int num){
+    void insertAtSortedStack(stack<int> &st, int num){
     if(st.empty() || st.top() <= num){
         st.push(num);
         return;
@@ -76,7 +76,7 @@ class Solution {
 
         sortStack(st);
 
-        insertAtBottom(st,top);
+        insertAtSortedStack(st,top);
     }
 };
 ```
